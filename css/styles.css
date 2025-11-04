@@ -1,0 +1,70 @@
+:root{
+  --bg1:#0b0e1d; --bg2:#0a0c18;
+  --card:#121633; --glass:rgba(255,255,255,.06);
+  --text:#eef2ff; --muted:#a9b1ff;
+  --brand:#7c5cff; --accent:#00e5ff;
+  --radius:16px; --shadow:0 12px 36px rgba(0,0,0,.35);
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0; color:var(--text);
+  background: radial-gradient(1200px 600px at 10% -10%, #16204b 0%, transparent 60%),
+              linear-gradient(180deg, var(--bg2), var(--bg1));
+  font-family: Inter, system-ui, Segoe UI, Roboto, Arial;
+  display:flex; flex-direction:column; gap:0;
+}
+
+.topbar{padding:18px 18px 8px; border-bottom:1px solid rgba(255,255,255,.08)}
+.topbar h1{margin:0; font-size:20px}
+.topbar .sub{margin:6px 0 0; color:var(--muted); font-size:13px}
+
+.uploader{
+  display:grid; grid-template-columns:1fr 1fr auto;
+  gap:14px; padding:14px 18px; align-items:stretch;
+}
+.drop{
+  position:relative; background:linear-gradient(180deg, color-mix(in oklab, var(--card), var(--brand) 10%), var(--card));
+  border:1px dashed color-mix(in oklab, var(--brand), transparent 60%);
+  border-radius:var(--radius); box-shadow:var(--shadow); min-height:120px;
+  display:flex; align-items:center; justify-content:center; overflow:hidden;
+}
+.drop .file{position:absolute; inset:0; width:100%; height:100%; opacity:0; cursor:pointer}
+.drop .hint{display:flex; flex-direction:column; align-items:center; gap:6px}
+.drop .eye{font-weight:700}
+.thumb{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:none}
+
+.tools{display:flex; gap:8px; align-items:center}
+.btn{
+  padding:10px 14px; border-radius:12px; border:1px solid rgba(255,255,255,.14);
+  color:var(--text); background: color-mix(in oklab, var(--card), var(--brand) 14%);
+  cursor:pointer; box-shadow:var(--shadow);
+}
+.btn.ghost{background:transparent}
+.btn:hover{filter:brightness(1.08)}
+
+.stage{
+  display:grid; grid-template-columns:1fr 340px; gap:16px; padding:16px 18px; height:100%;
+}
+#canvasWrap{
+  background:var(--card); border-radius:var(--radius); box-shadow:var(--shadow);
+  overflow:hidden; min-height:300px; display:flex; align-items:center; justify-content:center;
+}
+#app{width:100%; height:100%; display:block}
+
+.panel{
+  background:linear-gradient(180deg, color-mix(in oklab, var(--card), var(--accent) 8%), var(--card));
+  border-radius:var(--radius); box-shadow:var(--shadow); padding:14px; display:flex; flex-direction:column; gap:12px;
+}
+.panel h2{margin:0; font-size:16px}
+.ctrl label{display:flex; flex-direction:column; gap:6px; margin:6px 0}
+.grid2{display:grid; grid-template-columns:1fr 1fr; gap:12px}
+summary{cursor:pointer; margin:4px 0}
+.tips ul{margin:6px 0 0 18px; padding:0; color:var(--muted)}
+
+.foot{padding:12px 18px; border-top:1px solid rgba(255,255,255,.08); color:var(--muted); font-size:12px}
+
+@media (max-width: 980px){
+  .uploader{grid-template-columns:1fr; grid-auto-rows:auto}
+  .stage{grid-template-columns:1fr}
+}
